@@ -1,0 +1,19 @@
+h3 Badges
+.row
+  .span8
+    table.table.table-condensed
+      thead
+        tr
+          th Name
+          th Image
+          th Earned by
+          th 
+      tbody
+        - @badges.each do |badge|
+          tr
+            td= link_to badge.name, badge
+            td= badge.image_html
+            td= badge.users.count.to_s
+            td= link_to("Delete badge", badge, :data =>   confirm=("Are you sure?" ) , :method => :delete, :class => 'btn btn-mini')
+
+=link_to "New Badge", new_badge_path
