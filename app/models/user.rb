@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   rolify
+  has_many :achievements
   has_many :badges, through: :achievements
   validates_presence_of :name
 

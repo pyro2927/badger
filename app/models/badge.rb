@@ -1,6 +1,6 @@
 class Badge < ActiveRecord::Base
   belongs_to :background
-  has_many :achievements
+  has_many :achievements, dependent: :destroy
   has_many :users, through: :achievements
   has_attached_file :image
 

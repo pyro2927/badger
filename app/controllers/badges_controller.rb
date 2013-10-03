@@ -1,5 +1,5 @@
 class BadgesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :create
 
   def new
   end
@@ -23,6 +23,6 @@ class BadgesController < ApplicationController
   
   private
     def badge_params
-      params.require(:badge).permit(:name, :image)
+      params.require(:badge).permit!
     end
 end

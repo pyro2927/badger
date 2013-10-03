@@ -1,5 +1,11 @@
 h3 User
-p
-  | User: #{@user.name}
-p
-  | Email: #{@user.email if @user.email}
+p User: #{@user.name}
+p Email: #{@user.email if @user.email}
+
+h4 Achievements
+- @user.badges.each do |achievement|
+  = image_tag achievement.image.url, :class => "img-circle"
+
+h4 Available Achievements
+- @unearned_badges.each do |badge|
+  = link_to image_tag(badge.image.url, :class => "img-circle"), new_achievement_path(@user, badge), :method => :post

@@ -1,0 +1,8 @@
+h3 Achievements
+-@users.each do |user|
+  .row-fluid
+    .span2
+      =link_to image_tag(Gravatar.new(user.email).image_url + "?size=150", :class => 'img-circle'), user
+    -user.badges.each do |badge|
+      .span2
+        =badge.image_html

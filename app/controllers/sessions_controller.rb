@@ -7,6 +7,11 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
+    if ENV['OMNIAUTH_DOMAIN'] && auth.info.email.split("@").last != ENV['OMNIAUTH_DOMAIN']  
+      flash[:error] = auth.info.email + " is not on the required domain"
+      redirect_to root_path
+      return
+    end
     user = User.where(:provider => auth['provider'], 
                       :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
 # Reset the session after successful login, per
