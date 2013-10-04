@@ -17,6 +17,7 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem 'slim'
 gem 'paperclip', '~> 3.5.1'
 gem 'gravatar-ultimate'
+gem 'thin'
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
@@ -42,5 +43,4 @@ group :test do
 end
 group :production do
   gem 'pg'
-  gem 'unicorn'
 end
