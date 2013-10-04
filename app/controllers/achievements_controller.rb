@@ -14,4 +14,12 @@ class AchievementsController < ApplicationController
     achievement.save
     redirect_to user
   end
+
+  def destroy
+    achievement = Achievement.find(params[:id])
+    authorize! :destroy, achievement
+    @user = achievement.user
+    achievement.destroy
+    redirect_to @user
+  end
 end

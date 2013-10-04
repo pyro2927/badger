@@ -2,4 +2,7 @@ h3 New Badge
 =simple_form_for @badge do |f|
   =f.input :name
   =f.input :image
+  =f.label "Default?"
+  =f.check_box :default
+  br
   =f.submit "Save"

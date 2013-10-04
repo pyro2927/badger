@@ -20,6 +20,17 @@ class SessionsController < ApplicationController
     reset_session
     session[:user_id] = user.id
     user.add_role :admin if User.count == 1 # make the first user an admin
+
+    # add default badges to each user
+    if user.badges.count == 0
+      Badge.where(:default => true).each do |badge|
+        ach = Achievement.new
+        ach.badge = badge
+        ach.user = user
+        ach.save
+      end
+    end
+
     if user.email.blank?
       redirect_to edit_user_path(user), :alert => "Please enter your email address."
     else

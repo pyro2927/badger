@@ -1,5 +1,6 @@
 = form_for(@user) do |f|
   = f.label :email
   = f.text_field :email
+  = f.check_box :default
   br/
   = f.submit "Sign in"
