@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   rolify
   has_many :achievements
   has_many :badges, through: :achievements
@@ -6,6 +7,10 @@ class User < ActiveRecord::Base
 
   def admin
     role_ids
+  end
+
+  def profile_image
+    ActionController::Base.helpers.link_to ActionController::Base.helpers.image_tag(Gravatar.new(email).image_url + "?size=150", :class => 'img-circle'), user_path(self)
   end
 
   def self.create_with_omniauth(auth)

@@ -9,6 +9,9 @@ class BadgesController < ApplicationController
     redirect_to badges_path
   end
 
+  def show
+  end
+
   def index
   end
 
