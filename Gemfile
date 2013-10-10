@@ -42,6 +42,7 @@ group :test do
   gem 'minitest-wscolor'
 end
 group :production do
+  gem 'aws-sdk'
   gem 'pg'
   gem 'rails_12factor'
 end
