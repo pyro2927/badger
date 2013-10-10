@@ -1,4 +1,10 @@
-h3 Home
-- @users.each do |user|
-  p
-    | User: #{link_to user.name, user}
+h3 Company Achievements!
+-if ENV['OMNIAUTH_DOMAIN']
+  div.alert You must have a Google account on the #{ENV['OMNIAUTH_DOMAIN']} in order to use this website.
+p Have you ever wanted company achievements?? Well now you can! Just click 'login' above to get started! Once your account is created, you can earn achievements by doing cool stuff throughout the office.
+
+h4 Sample Achievements
+row
+  -@badges.each do |badge|
+    span3
+      =badge.image_html

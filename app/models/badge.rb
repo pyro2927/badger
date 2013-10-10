@@ -5,6 +5,6 @@ class Badge < ActiveRecord::Base
   has_attached_file :image
 
   def image_html
-    ActionController::Base.helpers.image_tag image.url, :size => "100x100"
+    ActionController::Base.helpers.image_tag image.url, :size => "100x100", :class => "img-circle", :title => name
   end
 end

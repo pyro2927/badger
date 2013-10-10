@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @badges = Badge.all
+    @badges = @badges[0..4] #TODO: randomize this offset
   end
 end

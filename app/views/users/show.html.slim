@@ -4,8 +4,13 @@ p Email: #{@user.email if @user.email}
 
 h4 Achievements
 - @user.achievements.each do |achievement|
-  = link_to image_tag(achievement.badge.image.url, :class => "img-circle"), achievement, :method => :delete, :confirm => "Are you sure you want to remove the #{achievement.badge.name} badge?"
+  row
+    span3
+      =link_to achievement.badge.image_html, achievement, :method => :delete, :confirm => "Are you sure you want to remove the #{achievement.badge.name} badge?"
 
-h4 Available Achievements
-- @unearned_badges.each do |badge|
-  = link_to image_tag(badge.image.url, :class => "img-circle"), new_achievement_path(@user, badge), :method => :post
+- if current_user.has_role? :admin
+  h4 Available Achievements
+  - @unearned_badges.each do |badge|
+    row
+      span3
+        =link_to badge.image_html, new_achievement_path(@user, badge), :method => :post
