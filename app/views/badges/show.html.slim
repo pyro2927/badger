@@ -1,5 +1,14 @@
 h1 #{@badge.name}
 =@badge.image_html
-h3 Earned by:
--@badge.achievements.each do |ach|
-  =ach.user.profile_image
+h3 Percentage of people who have earned this badge:
+div.row
+  div.span11
+    div.progress.progress-striped
+      <div class="bar" style="width: #{@percent * 100}%;"></div>
+  div.span1
+    = (@percent * 100).to_s + "%"
+div.row
+  div.span12
+    h3 Earned by:
+    -@badge.achievements.each do |ach|
+      =ach.user.profile_image

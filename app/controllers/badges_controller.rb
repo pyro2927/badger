@@ -10,6 +10,7 @@ class BadgesController < ApplicationController
   end
 
   def show
+    @percent = @badge.achievements.count / User.all.count
   end
 
   def index
